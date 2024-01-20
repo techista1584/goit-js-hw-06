@@ -10,26 +10,23 @@ const ingredients = [
 ];
 
 // Get the ul#ingredients element
-const ingredientsList = document.querySelector("#ingredients");
+const list = document.getElementById("ingredients");
 
-// Create an empty array to store the li elements
-const items = [];
+// Create a document fragment to hold the li elements
+const fragment = document.createDocumentFragment();
 
 // Loop through the ingredients array
-for (const ingredient of ingredients) {
-  // Create a li element
-  const item = document.createElement("li");
-
-  // Add the ingredient name as its text content
-  item.textContent = ingredient;
-
+for (let ingredient of ingredients) {
+  // Create a new li element
+  let li = document.createElement("li");
+  // Set its text content to the ingredient name
+  li.textContent = ingredient;
   // Add the item class to the element
-  item.classList.add("item");
-
-  // Push the item to the items array
-  items.push(item);
+  li.classList.add("item");
+  // Append the li element to the fragment
+  fragment.appendChild(li);
 }
 
-// Insert all li elements to the ul#ingredients list in a single operation
-ingredientsList.append(...items);
+// Insert all li elements to the list in a single operation
+list.appendChild(fragment);
 
